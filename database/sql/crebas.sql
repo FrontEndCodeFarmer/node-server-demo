@@ -1,6 +1,6 @@
 /*==============================================================*/
 /* DBMS name:      MySQL 5.0                                    */
-/* Created on:     2018/5/21 18:00:44                           */
+/* Created on:     2018/5/22 11:29:41                           */
 /*==============================================================*/
 
 
@@ -19,48 +19,48 @@ drop table if exists user_role;
 /*==============================================================*/
 create table dict_code
 (
-   item_code            varchar(32) not null comment '×Öµä±àÂë',
-   item_name            varchar(32) not null comment '×ÖµäÃû³Æ',
-   item_type            varchar(32) not null comment '×ÖµäÀàĞÍ',
-   sort                 int2 comment 'ÅÅĞò',
-   enable_flag          int2 not null default '1' comment 'ÊÇ·ñÆôÓÃ',
-   memo                 varchar(256) comment 'ËµÃ÷'
+   item_code            varchar(32) not null comment 'å­—å…¸ç¼–ç ',
+   item_name            varchar(32) not null comment 'å­—å…¸åç§°',
+   item_type            varchar(32) not null comment 'å­—å…¸ç±»å‹',
+   sort                 int2 comment 'æ’åº',
+   enable_flag          int2 not null default '1' comment 'æ˜¯å¦å¯ç”¨',
+   memo                 varchar(256) comment 'è¯´æ˜'
 );
 
-alter table dict_code comment '×Öµä±íÊı¾İ';
+alter table dict_code comment 'å­—å…¸è¡¨æ•°æ®';
 
 /*==============================================================*/
 /* Table: dict_code_type                                        */
 /*==============================================================*/
 create table dict_code_type
 (
-   type_code            varchar(32) not null comment '×ÖµäÀàĞÍ±àÂë',
-   type_name            varchar(32) not null comment '×ÖµäÀàĞÍÃû³Æ',
-   enable_flag          int2 not null default '1' comment 'ÊÇ·ñÆôÓÃ
-            0-½ûÓÃ£¬1-ÆôÓÃ,Ä¬ÈÏÆôÓÃ',
-   memo                 varchar(256) comment 'ËµÃ÷',
+   type_code            varchar(32) not null comment 'å­—å…¸ç±»å‹ç¼–ç ',
+   type_name            varchar(32) not null comment 'å­—å…¸ç±»å‹åç§°',
+   enable_flag          int2 not null default '1' comment 'æ˜¯å¦å¯ç”¨
+            0-ç¦ç”¨ï¼Œ1-å¯ç”¨,é»˜è®¤å¯ç”¨',
+   memo                 varchar(256) comment 'è¯´æ˜',
    primary key (type_code)
 );
 
-alter table dict_code_type comment '×Öµä±íÀàĞÍ';
+alter table dict_code_type comment 'å­—å…¸è¡¨ç±»å‹';
 
 /*==============================================================*/
 /* Table: role                                                  */
 /*==============================================================*/
 create table role
 (
-   uuid                 varchar(32) not null comment '½ÇÉ«id',
-   role_name            varchar(64) not null comment '½ÇÉ«Ãû³Æ',
-   memo                 varchar(256) comment '½ÇÉ«ËµÃ÷',
-   create_time          timestamp not null comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment '¸üĞÂÊ±¼ä',
-   create_user          VARCHAR(32) not null comment '´´½¨ÓÃ»§',
-   update_user          VARCHAR(32) comment '¸üĞÂÓÃ»§',
-   delete_flag          int2 not null comment 'É¾³ı±ê¼Ç',
+   uuid                 varchar(32) not null comment 'è§’è‰²id',
+   role_name            varchar(64) not null comment 'è§’è‰²åç§°',
+   memo                 varchar(256) comment 'è§’è‰²è¯´æ˜',
+   create_time          timestamp not null comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'æ›´æ–°æ—¶é—´',
+   create_user          VARCHAR(32) not null comment 'åˆ›å»ºç”¨æˆ·',
+   update_user          VARCHAR(32) comment 'æ›´æ–°ç”¨æˆ·',
+   delete_flag          int2 not null comment 'åˆ é™¤æ ‡è®°',
    primary key (uuid)
 );
 
-alter table role comment '½ÇÉ«±í';
+alter table role comment 'è§’è‰²è¡¨';
 
 /*==============================================================*/
 /* Index: idx_role_role_name                                    */
@@ -75,27 +75,27 @@ create index idx_role_role_name on role
 /*==============================================================*/
 create table user
 (
-   uuid                 VARCHAR(32) not null comment 'ÓÃ»§id',
-   user_name            VARCHAR(256) not null comment 'µÇÂ¼ÓÃÃû³Æ',
-   password             VARCHAR(256) not null comment 'ÓÃ»§ÃÜÂë',
-   full_name            varchar(256) comment 'ÓÃ»§Ãû³Æ',
-   email                VARCHAR(256) comment 'ÓÃ»§ÓÊÏä',
-   phone_num            VARCHAR(128) comment 'µç»°ºÅÂë',
-   department           VARCHAR(32) comment '²¿ÃÅid',
-   user_status          int2 not null comment 'ÓÃ»§×´Ì¬£º
-            1-Õı³£
-            2-½ûÓÃ
+   uuid                 VARCHAR(32) not null comment 'ç”¨æˆ·id',
+   user_name            VARCHAR(256) not null comment 'ç™»å½•ç”¨åç§°',
+   password             VARCHAR(256) not null comment 'ç”¨æˆ·å¯†ç ',
+   full_name            varchar(256) comment 'ç”¨æˆ·åç§°',
+   email                VARCHAR(256) comment 'ç”¨æˆ·é‚®ç®±',
+   phone_num            VARCHAR(128) comment 'ç”µè¯å·ç ',
+   department           VARCHAR(32) comment 'éƒ¨é—¨id',
+   user_status          int2 not null comment 'ç”¨æˆ·çŠ¶æ€ï¼š
+            1-æ­£å¸¸
+            2-ç¦ç”¨
             
             ',
-   create_time          timestamp not null comment '´´½¨Ê±¼ä',
-   update_time          timestamp comment '¸üĞÂÊ±¼ä',
-   create_user          VARCHAR(32) not null comment '´´½¨ÓÃ»§',
-   update_user          VARCHAR(32) comment '¸üĞÂÓÃ»§',
-   delete_flag          int2 not null comment 'É¾³ı±ê¼Ç',
+   create_time          timestamp not null comment 'åˆ›å»ºæ—¶é—´',
+   update_time          timestamp comment 'æ›´æ–°æ—¶é—´',
+   create_user          VARCHAR(32) not null comment 'åˆ›å»ºç”¨æˆ·',
+   update_user          VARCHAR(32) comment 'æ›´æ–°ç”¨æˆ·',
+   delete_flag          int2 not null comment 'åˆ é™¤æ ‡è®°',
    primary key (uuid)
 );
 
-alter table user comment 'ÓÃ»§±í';
+alter table user comment 'ç”¨æˆ·è¡¨';
 
 /*==============================================================*/
 /* Index: idx_user_user_uuid                                    */
@@ -118,11 +118,11 @@ create index idx_user_user_name on user
 /*==============================================================*/
 create table user_role
 (
-   user_id              varchar(32) not null comment 'ÓÃ»§id',
-   role_id              varchar(32) not null comment '½ÇÉ«id'
+   user_id              varchar(32) not null comment 'ç”¨æˆ·id',
+   role_id              varchar(32) not null comment 'è§’è‰²id'
 );
 
-alter table user_role comment 'ÓÃ»§½ÇÉ«¹ØÁª±í';
+alter table user_role comment 'ç”¨æˆ·è§’è‰²å…³è”è¡¨';
 
 /*==============================================================*/
 /* Index: idx_user_role_user_id                                 */
